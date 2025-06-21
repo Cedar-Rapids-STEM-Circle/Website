@@ -1,0 +1,964 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cedar Rapids STEM Circle | Science, Technology, Engineering & Math</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --stem-blue: #1a4480;
+            --stem-red: #d32f2f;
+            --stem-green: #2e7d32;
+            --stem-purple: #6a1b9a;
+            --stem-yellow: #ffc107;
+            --light: #f5f7fa;
+            --dark: #2d3748;
+            --text: #333333;
+            --light-gray: #e2e8f0;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            background-color: var(--light);
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo img {
+            height: 50px;
+            margin-right: 15px;
+        }
+        
+        .logo h1 {
+            font-size: 1.5rem;
+            background: linear-gradient(to right, var(--stem-blue), var(--stem-green), var(--stem-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 700;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 25px;
+        }
+        
+        nav ul li a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 600;
+            transition: color 0.3s;
+            position: relative;
+        }
+        
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 3px;
+            bottom: -5px;
+            left: 0;
+            background: linear-gradient(to right, var(--stem-blue), var(--stem-green), var(--stem-purple));
+            transition: width 0.3s;
+        }
+        
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+        
+        nav ul li a:hover {
+            color: var(--stem-blue);
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
+                        url('https://images.unsplash.com/photo-1532094349884-543bc11b234d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1800&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 180px 0 120px;
+            margin-top: 80px;
+        }
+        
+        .hero h2 {
+            font-size: 3.2rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            animation: fadeInDown 1s ease;
+        }
+        
+        .hero p {
+            font-size: 1.3rem;
+            max-width: 800px;
+            margin: 0 auto 40px;
+            animation: fadeInUp 1s ease;
+        }
+        
+        .stem-tag {
+            display: inline-flex;
+            margin: 0 5px;
+            padding: 3px 10px;
+            border-radius: 20px;
+            font-weight: 600;
+        }
+        
+        .stem-science { background-color: var(--stem-blue); }
+        .stem-tech { background-color: var(--stem-green); }
+        .stem-engineering { background-color: var(--stem-red); }
+        .stem-math { background-color: var(--stem-purple); }
+        
+        .btn {
+            display: inline-block;
+            padding: 14px 35px;
+            background-color: var(--stem-yellow);
+            color: var(--dark);
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 700;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            font-size: 1.1rem;
+            margin: 10px;
+            animation: fadeIn 1.5s ease;
+        }
+        
+        .btn:hover {
+            background-color: #ffb300;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+        
+        .btn-primary {
+            background-color: var(--stem-red);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background-color: #b71c1c;
+        }
+        
+        /* Section Styles */
+        section {
+            padding: 90px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .section-title h2 {
+            font-size: 2.6rem;
+            color: var(--stem-blue);
+            position: relative;
+            display: inline-block;
+            padding-bottom: 15px;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 5px;
+            background: linear-gradient(to right, var(--stem-blue), var(--stem-green), var(--stem-purple));
+            border-radius: 3px;
+        }
+        
+        /* About Section */
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+            flex-wrap: wrap;
+        }
+        
+        .about-text {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .about-text p {
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+        
+        .stem-pillars {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        .pillar {
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+        
+        .pillar:hover {
+            transform: translateY(-10px);
+        }
+        
+        .pillar i {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+        
+        .pillar-science { background-color: rgba(26, 68, 128, 0.1); color: var(--stem-blue); }
+        .pillar-tech { background-color: rgba(46, 125, 50, 0.1); color: var(--stem-green); }
+        .pillar-engineering { background-color: rgba(211, 47, 47, 0.1); color: var(--stem-red); }
+        .pillar-math { background-color: rgba(106, 27, 154, 0.1); color: var(--stem-purple); }
+        
+        .about-image {
+            flex: 1;
+            min-width: 300px;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+            border: 5px solid white;
+        }
+        
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.5s;
+        }
+        
+        .about-image:hover img {
+            transform: scale(1.05);
+        }
+        
+        /* Instructors Section */
+        .instructors {
+            background-color: var(--light-gray);
+        }
+        
+        .instructor-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 50px;
+        }
+        
+        .instructor-card {
+            background: linear-gradient(to bottom, white 70%, rgba(26, 68, 128, 0.1) 100%);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            max-width: 380px;
+            transition: transform 0.3s;
+            position: relative;
+        }
+        
+        .instructor-card:hover {
+            transform: translateY(-15px);
+        }
+        
+        .instructor-img {
+            height: 280px;
+            overflow: hidden;
+        }
+        
+        .instructor-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .instructor-card:hover .instructor-img img {
+            transform: scale(1.1);
+        }
+        
+        .instructor-info {
+            padding: 30px;
+            text-align: center;
+        }
+        
+        .instructor-info h3 {
+            font-size: 1.6rem;
+            color: var(--stem-blue);
+            margin-bottom: 10px;
+        }
+        
+        .instructor-info .title {
+            color: var(--stem-red);
+            font-weight: 700;
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+        }
+        
+        .expertise {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin: 20px 0;
+        }
+        
+        .expertise span {
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+        
+        /* Events Section */
+        .events-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 35px;
+        }
+        
+        .event-card {
+            background-color: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+            transition: transform 0.3s;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+        
+        .event-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+        }
+        
+        .event-header {
+            padding: 20px;
+            text-align: center;
+            color: white;
+        }
+        
+        .science-header { background: linear-gradient(to right, var(--stem-blue), #2c5282); }
+        .tech-header { background: linear-gradient(to right, var(--stem-green), #2f855a); }
+        .engineering-header { background: linear-gradient(to right, var(--stem-red), #c53030); }
+        
+        .event-date {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+        
+        .event-time {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+        
+        .event-body {
+            padding: 25px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .event-body h3 {
+            color: var(--stem-blue);
+            margin-bottom: 15px;
+            font-size: 1.4rem;
+        }
+        
+        .event-body ul {
+            list-style-type: none;
+            margin-bottom: 25px;
+            flex-grow: 1;
+        }
+        
+        .event-body ul li {
+            margin-bottom: 12px;
+            display: flex;
+            align-items: flex-start;
+        }
+        
+        .event-body ul li i {
+            margin-right: 10px;
+            margin-top: 5px;
+            color: var(--stem-red);
+        }
+        
+        .event-footer {
+            margin-top: auto;
+            text-align: center;
+        }
+        
+        /* Resources Section */
+        .resources {
+            background-color: var(--light-gray);
+        }
+        
+        .resources-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 35px;
+        }
+        
+        .resource-card {
+            background-color: white;
+            border-radius: 15px;
+            padding: 35px 30px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+            text-align: center;
+            transition: transform 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .resource-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+        }
+        
+        .science-card::before { background: linear-gradient(to right, var(--stem-blue), #2c5282); }
+        .tech-card::before { background: linear-gradient(to right, var(--stem-green), #2f855a); }
+        .engineering-card::before { background: linear-gradient(to right, var(--stem-red), #c53030); }
+        .math-card::before { background: linear-gradient(to right, var(--stem-purple), #805ad5); }
+        
+        .resource-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+        }
+        
+        .resource-icon {
+            font-size: 3.5rem;
+            margin-bottom: 25px;
+        }
+        
+        .science-icon { color: var(--stem-blue); }
+        .tech-icon { color: var(--stem-green); }
+        .engineering-icon { color: var(--stem-red); }
+        .math-icon { color: var(--stem-purple); }
+        
+        .resource-card h3 {
+            color: var(--dark);
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+        }
+        
+        /* Footer */
+        footer {
+            background: linear-gradient(to right, var(--stem-blue), var(--stem-purple));
+            color: white;
+            padding: 80px 0 40px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 50px;
+            margin-bottom: 50px;
+        }
+        
+        .footer-column h3 {
+            font-size: 1.5rem;
+            margin-bottom: 25px;
+            position: relative;
+            padding-bottom: 12px;
+        }
+        
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background-color: var(--stem-yellow);
+            border-radius: 2px;
+        }
+        
+        .footer-column p {
+            margin-bottom: 20px;
+            opacity: 0.9;
+            line-height: 1.7;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 15px;
+        }
+        
+        .footer-column ul li a {
+            color: white;
+            text-decoration: none;
+            opacity: 0.9;
+            transition: opacity 0.3s;
+            display: flex;
+            align-items: center;
+        }
+        
+        .footer-column ul li a i {
+            margin-right: 10px;
+            color: var(--stem-yellow);
+            width: 20px;
+        }
+        
+        .footer-column ul li a:hover {
+            opacity: 1;
+            text-decoration: underline;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            color: white;
+            transition: all 0.3s;
+        }
+        
+        .social-links a:hover {
+            background-color: var(--stem-yellow);
+            color: var(--dark);
+            transform: translateY(-5px);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 40px;
+            border-top: 1px solid rgba(255,255,255,0.15);
+            opacity: 0.8;
+            font-size: 0.95rem;
+        }
+        
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .header-container {
+                flex-direction: column;
+                padding: 15px 0;
+            }
+            
+            nav ul {
+                margin-top: 20px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            nav ul li {
+                margin: 10px 15px;
+            }
+            
+            .hero {
+                padding: 150px 0 90px;
+            }
+            
+            .hero h2 {
+                font-size: 2.5rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2.2rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .hero {
+                padding: 130px 0 70px;
+            }
+            
+            .hero h2 {
+                font-size: 2rem;
+            }
+            
+            .section-title h2 {
+                font-size: 1.8rem;
+            }
+            
+            .about-content {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48Y2lyY2xlIGN4PSI1MCIgY3k9IjUwIiByPSI0NSIgZmlsbD0iIzFhNDQ4MCIvPjxjaXJjbGUgY3g9IjMwIiBjeT0iMzAiIHI9IjgiIGZpbGw9IiMyZTdkMzIiLz48Y2lyY2xlIGN4PSI3MCIgY3k9IjMwIiByPSI4IiBmaWxsPSIjZDMyZjJmIi8+PGNpcmNsZSBjeD0iMzAiIGN5PSI3MCIgcj0iOCIgZmlsbD0iI2QzMmYyZiIvPjxjaXJjbGUgY3g9IjcwIiBjeT0iNzAiIHI9IjgiIGZpbGw9IiM2YTFiOWEiLz48cGF0aCBkPSJNNTAsMjAgTDUwLDgwIE0yMCw1MCA4MCw1MCIgc3Ryb2tlPSIjZmZmIiBzdHJva2Utd2lkdGg9IjgiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPjwvc3ZnPg==" alt="Cedar Rapids STEM Circle Logo">
+                <h1>Cedar Rapids STEM Circle</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#about"><i class="fas fa-info-circle"></i> About</a></li>
+                    <li><a href="#instructors"><i class="fas fa-users"></i> Instructors</a></li>
+                    <li><a href="#events"><i class="fas fa-calendar-alt"></i> Events</a></li>
+                    <li><a href="#resources"><i class="fas fa-book"></i> Resources</a></li>
+                    <li><a href="#contact"><i class="fas fa-envelope"></i> Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h2>Igniting Passion for STEM in Cedar Rapids</h2>
+            <p>Cedar Rapids STEM Circle provides hands-on learning experiences in <span class="stem-tag stem-science">Science</span>, <span class="stem-tag stem-tech">Technology</span>, <span class="stem-tag stem-engineering">Engineering</span>, and <span class="stem-tag stem-math">Mathematics</span> for students of all ages. Join our community of innovators!</p>
+            <a href="#events" class="btn btn-primary">View Upcoming Events</a>
+            <a href="#resources" class="btn">Explore Learning Resources</a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="container">
+            <div class="section-title">
+                <h2>About Our STEM Circle</h2>
+            </div>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>The Cedar Rapids STEM Circle is a community-driven initiative dedicated to inspiring the next generation of scientists, engineers, and innovators. We create engaging experiences that make STEM accessible and exciting for students from middle school through high school.</p>
+                    <p>Through workshops, projects, and collaborative problem-solving, we help students develop critical thinking skills and discover real-world applications of STEM principles. Our approach emphasizes creativity, experimentation, and hands-on learning.</p>
+                    <p>We welcome students of all backgrounds and experience levels. Whether you're a STEM enthusiast or just beginning to explore these fields, our circle provides a supportive environment for discovery and growth.</p>
+                    
+                    <div class="stem-pillars">
+                        <div class="pillar pillar-science">
+                            <i class="fas fa-flask"></i>
+                            <h3>Science</h3>
+                            <p>Explore biology, chemistry, physics & environmental science</p>
+                        </div>
+                        <div class="pillar pillar-tech">
+                            <i class="fas fa-laptop-code"></i>
+                            <h3>Technology</h3>
+                            <p>Coding, robotics, AI, and digital innovation</p>
+                        </div>
+                        <div class="pillar pillar-engineering">
+                            <i class="fas fa-cogs"></i>
+                            <h3>Engineering</h3>
+                            <p>Design, build, and test innovative solutions</p>
+                        </div>
+                        <div class="pillar pillar-math">
+                            <i class="fas fa-calculator"></i>
+                            <h3>Mathematics</h3>
+                            <p>Problem-solving and analytical thinking</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1535223289827-42f1e9919769?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="Students working on STEM project">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Instructors Section -->
+    <section id="instructors" class="instructors">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Expert Instructors</h2>
+            </div>
+            <div class="instructor-container">
+                <div class="instructor-card">
+                    <div class="instructor-img">
+                        <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Yihan Richard Weng">
+                    </div>
+                    <div class="instructor-info">
+                        <h3>Yihan Richard Weng</h3>
+                        <div class="title">Lead STEM Educator</div>
+                        <p>Dr. Weng holds a Ph.D. in Applied Mathematics and Computer Science from Stanford University. With over 15 years of teaching experience, he specializes in making complex STEM concepts accessible and exciting.</p>
+                        
+                        <div class="expertise">
+                            <span style="background-color: rgba(26, 68, 128, 0.15); color: var(--stem-blue);">Data Science</span>
+                            <span style="background-color: rgba(106, 27, 154, 0.15); color: var(--stem-purple);">Algorithm Design</span>
+                            <span style="background-color: rgba(46, 125, 50, 0.15); color: var(--stem-green);">Robotics</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="instructor-card">
+                    <div class="instructor-img">
+                        <img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Abhay Suri">
+                    </div>
+                    <div class="instructor-info">
+                        <h3>Abhay Suri</h3>
+                        <div class="title">Engineering & Tech Specialist</div>
+                        <p>Abhay is a mechanical engineer and technology educator with a passion for hands-on learning. He has developed STEM curricula for schools across Iowa and leads our engineering design challenges.</p>
+                        
+                        <div class="expertise">
+                            <span style="background-color: rgba(211, 47, 47, 0.15); color: var(--stem-red);">3D Printing</span>
+                            <span style="background-color: rgba(26, 68, 128, 0.15); color: var(--stem-blue);">Physics</span>
+                            <span style="background-color: rgba(46, 125, 50, 0.15); color: var(--stem-green);">Renewable Energy</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Events Section -->
+    <section id="events">
+        <div class="container">
+            <div class="section-title">
+                <h2>Upcoming STEM Events</h2>
+            </div>
+            <div class="events-container">
+                <div class="event-card">
+                    <div class="event-header science-header">
+                        <div class="event-date">September 18, 2023</div>
+                        <div class="event-time">4:30 PM - 6:30 PM</div>
+                    </div>
+                    <div class="event-body">
+                        <h3>Chemistry Lab Explorations</h3>
+                        <p>Hands-on experiments exploring chemical reactions, properties of matter, and environmental chemistry.</p>
+                        <ul>
+                            <li><i class="fas fa-user"></i> Instructor: Dr. Weng</li>
+                            <li><i class="fas fa-map-marker-alt"></i> Cedar Rapids Public Library, Lab Room</li>
+                            <li><i class="fas fa-users"></i> Grades 9-12</li>
+                            <li><i class="fas fa-flask"></i> Lab coats provided</li>
+                        </ul>
+                        <div class="event-footer">
+                            <a href="#" class="btn">Register Now</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="event-card">
+                    <div class="event-header tech-header">
+                        <div class="event-date">October 5, 2023</div>
+                        <div class="event-time">5:00 PM - 7:00 PM</div>
+                    </div>
+                    <div class="event-body">
+                        <h3>Robotics & Coding Workshop</h3>
+                        <p>Build and program autonomous robots to solve challenges. No prior experience needed!</p>
+                        <ul>
+                            <li><i class="fas fa-user"></i> Instructor: Abhay Suri</li>
+                            <li><i class="fas fa-map-marker-alt"></i> Washington High School, Tech Lab</li>
+                            <li><i class="fas fa-users"></i> Grades 6-10</li>
+                            <li><i class="fas fa-robot"></i> Equipment provided</li>
+                        </ul>
+                        <div class="event-footer">
+                            <a href="#" class="btn">Register Now</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="event-card">
+                    <div class="event-header engineering-header">
+                        <div class="event-date">October 22, 2023</div>
+                        <div class="event-time">3:00 PM - 5:30 PM</div>
+                    </div>
+                    <div class="event-body">
+                        <h3>Engineering Design Challenge</h3>
+                        <p>Team-based competition to design and build structures that can withstand simulated earthquakes.</p>
+                        <ul>
+                            <li><i class="fas fa-user"></i> Instructors: Weng & Suri</li>
+                            <li><i class="fas fa-map-marker-alt"></i> Kennedy High School, Engineering Wing</li>
+                            <li><i class="fas fa-users"></i> All levels welcome</li>
+                            <li><i class="fas fa-hard-hat"></i> Materials provided</li>
+                        </ul>
+                        <div class="event-footer">
+                            <a href="#" class="btn">Register Now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Resources Section -->
+    <section id="resources" class="resources">
+        <div class="container">
+            <div class="section-title">
+                <h2>STEM Learning Resources</h2>
+            </div>
+            <div class="resources-container">
+                <div class="resource-card science-card">
+                    <div class="resource-icon science-icon">
+                        <i class="fas fa-microscope"></i>
+                    </div>
+                    <h3>Science Explorations</h3>
+                    <p>Lab guides, experiment videos, and interactive simulations for biology, chemistry, and physics.</p>
+                    <a href="#" class="btn">Explore Science</a>
+                </div>
+                <div class="resource-card tech-card">
+                    <div class="resource-icon tech-icon">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h3>Coding & Tech</h3>
+                    <p>Programming tutorials, robotics projects, and AI learning materials for all skill levels.</p>
+                    <a href="#" class="btn">Explore Technology</a>
+                </div>
+                <div class="resource-card engineering-card">
+                    <div class="resource-icon engineering-icon">
+                        <i class="fas fa-tools"></i>
+                    </div>
+                    <h3>Engineering Projects</h3>
+                    <p>Design challenges, CAD tutorials, and engineering principles for aspiring creators.</p>
+                    <a href="#" class="btn">Explore Engineering</a>
+                </div>
+                <div class="resource-card math-card">
+                    <div class="resource-icon math-icon">
+                        <i class="fas fa-calculator"></i>
+                    </div>
+                    <h3>Math Challenges</h3>
+                    <p>Problem-solving resources, math competition prep, and real-world applications.</p>
+                    <a href="#" class="btn">Explore Mathematics</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Cedar Rapids STEM Circle</h3>
+                    <p>Inspiring innovation and discovery through hands-on STEM education for Cedar Rapids youth.</p>
+                    <p>Our programs are designed to spark curiosity, develop critical thinking skills, and prepare students for future careers in science and technology.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact Information</h3>
+                    <ul>
+                        <li><a href="#"><i class="fas fa-envelope"></i> info@crstemcircle.org</a></li>
+                        <li><a href="#"><i class="fas fa-phone"></i> (319) 555-1234</a></li>
+                        <li><a href="#"><i class="fas fa-map-marker-alt"></i> 456 Innovation Drive, Cedar Rapids, IA 52401</a></li>
+                        <li><a href="#"><i class="fas fa-clock"></i> Office Hours: Mon-Fri 9AM-5PM</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#about"><i class="fas fa-chevron-right"></i> About Our Program</a></li>
+                        <li><a href="#instructors"><i class="fas fa-chevron-right"></i> Meet Our Instructors</a></li>
+                        <li><a href="#events"><i class="fas fa-chevron-right"></i> Upcoming Events</a></li>
+                        <li><a href="#resources"><i class="fas fa-chevron-right"></i> Learning Resources</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Volunteer Opportunities</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 Cedar Rapids STEM Circle. All rights reserved. | Designed with <i class="fas fa-heart" style="color: var(--stem-red);"></i> for STEM Education</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+        
+        // Header shadow on scroll
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.boxShadow = '0 5px 20px rgba(0,0,0,0.1)';
+            } else {
+                header.style.boxShadow = '0 2px 10px rgba(0,0,0,0.1)';
+            }
+        });
+        
+        // Animation for resource cards
+        const resourceCards = document.querySelectorAll('.resource-card');
+        resourceCards.forEach((card, index) => {
+            card.style.animationDelay = `${index * 0.2}s`;
+        });
+    </script>
+</body>
+</html>
