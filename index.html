@@ -325,13 +325,13 @@
         .instructor-info h3 {
             font-size: 1.6rem;
             color: var(--stem-blue);
-            margin-bottom: 10px;
+            margin-bottom: 0px;
         }
         
         .instructor-info .title {
             color: var(--stem-red);
             font-weight: 700;
-            margin-bottom: 15px;
+            margin-bottom: 5px;
             font-size: 1.1rem;
         }
         
@@ -639,11 +639,11 @@
             }
             
             .hero p {
-                font-size: 1.1rem;
+                font-size: 1rem;
             }
             
             .section-title h2 {
-                font-size: 2.2rem;
+                font-size: 2rem;
             }
         }
         
@@ -664,6 +664,52 @@
                 flex-direction: column;
             }
         }
+        /* Updated Instructor Section Styles */
+    .instructor-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+        gap: 30px;
+    }
+
+    .instructor-card {
+        display: flex;
+        max-width: 100%;
+        height: auto;
+    }
+
+    .instructor-img {
+        flex: 0 0 180px;
+        height: 180px;
+        border-radius: 15px 0 0 0;
+        overflow: hidden;
+    }
+
+    .instructor-info {
+        flex: 1;
+        padding: 20px;
+    }
+
+    @media (max-width: 768px) {
+        .instructor-container {
+            grid-template-columns: 1fr;
+        }
+        
+        .instructor-card {
+            flex-direction: column;
+        }
+        
+        .instructor-img {
+            flex: 0 0 200px;
+            width: 100%;
+            border-radius: 15px 15px 0 0;
+        }
+        .nam{
+            padding-top: 0px;
+            margin-top: 0px;
+            padding-bottom: 0px;
+            margin-bottom: 0px;
+        }
+}
     </style>
 </head>
 <body>
@@ -739,47 +785,89 @@
     </section>
 
     <!-- Instructors Section -->
-    <section id="instructors" class="instructors">
-        <div class="container">
-            <div class="section-title">
-                <h2>Our Student Mentors</h2>
-            </div>
-            <div class="instructor-container">
-                <div class="instructor-card">
-                    <div class="instructor-img">
-                        <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Yihan Richard Weng">
-                    </div>
-                    <div class="instructor-info">
-                        <h3>Yihan Richard Weng</h3>
-                        <div class="title">Math & Computer Science Mentor</div>
-                        <p>Yihan Richard Weng is a rising sophomore from Linn-Mar High School interested in Math and Computer Science. He has qualified for AIME and USACO Silver. He enjoys conducting chemistry experiments in his free time.</p>
-                        
-                        <div class="expertise">
-                            <span style="background-color: rgba(106, 27, 154, 0.15); color: var(--stem-purple);">Mathematics</span>
-                            <span style="background-color: rgba(46, 125, 50, 0.15); color: var(--stem-green);">Programming</span>
-                            <span style="background-color: rgba(26, 68, 128, 0.15); color: var(--stem-blue);">Chemistry</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="instructor-card">
-                    <div class="instructor-img">
-                        <img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Abhay Suri">
-                    </div>
-                    <div class="instructor-info">
-                        <h3>Abhay Suri</h3>
-                        <div class="title">Robotics & Software Mentor</div>
-                        <p>Abhay Suri is a rising sophomore from Linn-Mar High School interested in Robotics and Computer Science. He is the Software Lead for 4150 Dark Matter and USACO Silver. He enjoys coding in his free time.</p>
-                        
-                        <div class="expertise">
-                            <span style="background-color: rgba(211, 47, 47, 0.15); color: var(--stem-red);">Robotics</span>
-                            <span style="background-color: rgba(46, 125, 50, 0.15); color: var(--stem-green);">Software</span>
-                            <span style="background-color: rgba(106, 27, 154, 0.15); color: var(--stem-purple);">Algorithms</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <!-- Instructors Section -->
+<section id="instructors" class="instructors">
+    <div class="container">
+        <div class="section-title">
+            <h2>Our Student Mentors</h2>
         </div>
-    </section>
+        <div class="instructor-container">
+            <!-- Row 1 -->
+            <div class="instructor-card">
+                <div class="instructor-img">
+                    <img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Abhay Suri">
+                </div>
+                <div class="instructor-info">
+                    <h3 class ="nam">Abhay Suri</h3>
+                    <div class="title">Organizer</div>
+                    <p>bio</p>
+
+                </div>
+            </div>
+            <div class="instructor-card">
+                <div class="instructor-img">
+                    <img src="https://images.unsplash.com/photo-1542178243-bc20204b769f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Ethan Zhang">
+                </div>
+                <div class="instructor-info">
+                    <h3 class ="nam">Ahmed Rifaat Asic Abuthahir</h3>
+                    <div class="title">Computer Science & Engineering Mentor</div>
+                    <p>bio</p>
+                    
+                </div>
+            </div>
+
+            <!-- Row 2 -->
+            <div class="instructor-card">
+                <div class="instructor-img">
+                    <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Priya Patel">
+                </div>
+                <div class="instructor-info">
+                    <h3 class ="nam">Ethan Weng</h3>
+                    <div class="title">Math & Biology Mentor</div>
+                    <p>Ethan is a rising freshmen at Linn-Mar High School. He captained his school's MathCounts team. Outside of math, Ethan enjoys running, playing the violin, and Biology.</p>
+                    
+                </div>
+            </div>
+            <div class="instructor-card">
+                <div class="instructor-img">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Marcus Johnson">
+                </div>
+                <div class="instructor-info">
+                    <h3 class ="nam">George Joseph</h3>
+                    <div class="title">Biology & Chemistry Mentor</div>
+                    <p>George is a rising sophomore passionate about biology. He excels in advanced courses and leads Science Olympiad, HOSA, and Red Cross. George seeks to become an anesthesiologist.</p>
+                    
+                </div>
+            </div>
+            
+            <!-- Row 3 -->
+            <div class="instructor-card">
+                <div class="instructor-img">
+                    <img src="https://images.unsplash.com/photo-1544717305-2782549b5136?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Sophia Chen">
+                </div>
+                <div class="instructor-info">
+                    <h3 class ="nam">Kushagra Singh</h3>
+                    <div class="title">Physics & Engineering Mentor</div>
+                    <p>bio</p>
+                    
+                </div>
+            </div>
+            
+             <div class="instructor-card">
+                 <div class="instructor-img">
+                    <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Yihan Richard Weng">
+                </div>
+                <div class="instructor-info">
+                    <h3 class ="nam">Yihan Richard Weng</h3>
+                    <div class="title">Organizer</div>
+                    <p>Yihan Richard Weng will be a Sophomore at Linn-Mar High School this fall. He is interested in CS and Math, and participates in various competitions. He likes to solve puzzles in his free time.</p>
+
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</section>
 
     <!-- Events Section -->
     <section id="events">
